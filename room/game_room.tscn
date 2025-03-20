@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://cy64htegqbofp"]
+
+[ext_resource type="PackedScene" uid="uid://d33cgbj6ru35p" path="res://proced_rooms/prc_room_init.tscn" id="1_77q2s"]
+[ext_resource type="Script" path="res://script/GameRoom_init.cs" id="1_262ih"]
+[ext_resource type="PackedScene" uid="uid://cpmma5eogr7c0" path="res://obj/obj_plr.tscn" id="1_biinw"]
+[ext_resource type="Script" path="res://script/loading_screen.cs" id="4_6173g"]
+[ext_resource type="FontFile" uid="uid://ks3gpp5cns4w" path="res://fonts/EquipmentPro.ttf" id="4_a1oql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4286d"]
+size = Vector2(233.034, 902.595)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4cdh"]
+size = Vector2(233.034, 1559.6)
+
+[node name="game_room" type="Node2D"]
+script = ExtResource("1_262ih")
+
+[node name="room_generate" type="Node2D" parent="."]
+
+[node name="prc_room_init" parent="room_generate" instance=ExtResource("1_77q2s")]
+y_sort_enabled = true
+
+[node name="off_limit" type="StaticBody2D" parent="room_generate"]
+collision_layer = 4
+
+[node name="col_0" type="CollisionShape2D" parent="room_generate/off_limit"]
+position = Vector2(-9476, 260)
+scale = Vector2(3.56, 11.56)
+shape = SubResource("RectangleShape2D_4286d")
+
+[node name="col_1" type="CollisionShape2D" parent="room_generate/off_limit"]
+position = Vector2(7641, 260)
+scale = Vector2(3.56, 11.56)
+shape = SubResource("RectangleShape2D_4286d")
+
+[node name="col_2" type="CollisionShape2D" parent="room_generate/off_limit"]
+position = Vector2(-928.499, -5390)
+rotation = 1.5708
+scale = Vector2(3.56, 11.56)
+shape = SubResource("RectangleShape2D_h4cdh")
+
+[node name="col_3" type="CollisionShape2D" parent="room_generate/off_limit"]
+position = Vector2(-928, 5781)
+rotation = 1.5708
+scale = Vector2(3.56, 11.56)
+shape = SubResource("RectangleShape2D_h4cdh")
+
+[node name="obj_plr" parent="." instance=ExtResource("1_biinw")]
+y_sort_enabled = true
+collision_mask = 4
+
+[node name="loading_screen" type="CanvasLayer" parent="."]
+offset = Vector2(320, 180)
+transform = Transform2D(1, 0, 0, 1, 320, 180)
+script = ExtResource("4_6173g")
+
+[node name="blck_bcg" type="ColorRect" parent="loading_screen"]
+offset_left = -320.0
+offset_top = -180.0
+offset_right = -280.0
+offset_bottom = -140.0
+scale = Vector2(8.04, 4.52)
+color = Color(0, 0, 0, 1)
+
+[node name="txt_loading" type="Label" parent="loading_screen"]
+offset_left = -254.0
+offset_top = -112.0
+offset_right = -58.0
+offset_bottom = -77.0
+theme_override_fonts/font = ExtResource("4_a1oql")
+text = "Loading...
+\"Tip: Hold Shift to move faster\""
+horizontal_alignment = 1
+
+[node name="txt_seed" type="Label" parent="loading_screen"]
+offset_left = -314.0
+offset_top = -18.0
+offset_right = -239.0
+offset_bottom = 5.0
+theme_override_fonts/font = ExtResource("4_a1oql")
+theme_override_font_sizes/font_size = 16
+text = "Seed: "

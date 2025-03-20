@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpmma5eogr7c0"]
+
+[ext_resource type="Script" path="res://script/obj_player.cs" id="1_8dvna"]
+[ext_resource type="Texture2D" uid="uid://dpmsqwsd1y7q4" path="res://spr/spr_player.png" id="1_lt130"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lp68"]
+
+[node name="obj_plr" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_8dvna")
+
+[node name="sprite" type="Sprite2D" parent="."]
+rotation = 0.785398
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_lt130")
+
+[node name="plr_camera" type="Camera2D" parent="."]
+
+[node name="plr_collision" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+rotation = 0.785398
+scale = Vector2(0.635, 0.635)
+shape = SubResource("RectangleShape2D_5lp68")

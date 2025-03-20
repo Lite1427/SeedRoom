@@ -1,0 +1,4 @@
+[PRC_ROOM_INIT]
+IF UP == prc_upper_hall_2 -> RIGHT != prc_right_hall_2
+IF DOWN == prc_down_hall_1 -> LEFT == prc_left_hall_0
+IF LEFT == prc_left_hall_% | UP == prc_upper_hall_0 -> CREATE ONLY prc_left_hall_0 in UP at exit_0
